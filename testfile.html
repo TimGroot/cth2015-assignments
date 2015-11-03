@@ -1,0 +1,32 @@
+<html>
+<head> 
+ <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<style>
+    img {
+        width: 500px;
+        position:fixed;
+        margin-left: 350;
+        margin-top: 140;
+    }
+    button {
+        position:fixed;
+        margin-left: 550;
+    }
+</style>
+</head>
+<body>
+<section>
+<button name="button" onclick="turn()">turn image</button>
+</section>
+<section>
+  <img id="image" width="500px" src="http://i.ytimg.com/vi/AjnuMJRANLw/maxresdefault.jpg">
+</section>
+<script>
+var img = document.getElementById('image');
+var turn = function (){
+  img.style.transform = "rotate(90deg)"; 
+};
+    console.log("Hello!");
+</script>
+</body> 
+</html> 
