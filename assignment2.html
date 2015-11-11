@@ -1,0 +1,46 @@
+<html>
+<head> 
+ <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+ <section>
+  <button name="button1" onclick="turn()">turn image</button>
+  <button name="button2" onclick="turn()">guess</button>
+  <button name="button3" onclick="src= ">change image</button>
+ </section>
+<section>
+  <img id="image" width="500px" src="http://i.ytimg.com/vi/AjnuMJRANLw/maxresdefault.jpg">
+  <style>
+    img {
+        width: 500px;
+        position:fixed;
+        margin-left: 350;
+        margin-top: 140;
+    }
+    button1 {
+        position:fixed;
+        margin-left: 450;
+    }
+    button2 {
+        position:fixed;
+        Margin-left: 500;
+    }
+    button3 {
+        position:fixed;
+        Margin-left: 550;
+    }
+</style>
+</section>
+<script>
+ var img = document.getElementById('image');
+  var nummer = 0;
+   var turn = function (){
+    nummer = nummer + 90
+     console.log(nummer)
+      $('#image')[0].style.transform = "rotate("+ nummer +"deg)"; 
+};
+console.log($('#image')[0]);
+    console.log("Hello!");
+</script>
+</body> 
+</html> 
