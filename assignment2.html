@@ -5,11 +5,11 @@
 <body>
  <section>
   <button name="button1" onclick="turn()">turn image</button>
-  <button name="button2" onclick="turn()">guess</button>
-  <button name="button3" onclick="src= ">change image</button>
+  <button name="button2" onclick="guess()">guess</button>
+  <button name="button3" onclick="randomimg()">change image</button>
  </section>
 <section>
-  <img id="image" width="500px" src="http://i.ytimg.com/vi/AjnuMJRANLw/maxresdefault.jpg">
+  <img id="image" width="500px" src="">
   <style>
     img {
         width: 500px;
@@ -29,18 +29,44 @@
         position:fixed;
         Margin-left: 550;
     }
-</style>
+ </style>
 </section>
 <script>
- var img = document.getElementById('image');
-  var nummer = 0;
-   var turn = function (){
-    nummer = nummer + 90
-     console.log(nummer)
-      $('#image')[0].style.transform = "rotate("+ nummer +"deg)"; 
-};
-console.log($('#image')[0]);
-    console.log("Hello!");
+    var img = document.getElementById('image');
+    var nummer = 0;
+    var turn = function (){
+        console.log (nummer)
+        nummer = nummer + 90
+        console.log(nummer)
+        $('#image')[0].style.transform = "rotate("+ nummer +"deg)"; 
+        if (nummer == 360){
+            nummer = 0;
+        }
+    };
+    var guess = function (){
+        if (nummer == 0){
+            console.log ("its the right way up =D")
+        } else { 
+            console.log ("nope, wrong way up buddy:3")
+        }
+    };
+    var counter = 0;
+    var randomimg= function (){
+        var myImages1 = new Array();
+            myImages1[0] = "http://i.ytimg.com/vi/AjnuMJRANLw/maxresdefault.jpg";
+            myImages1[1] = "http://farm5.static.flickr.com/4041/4578961492_4ebc412517_z.jpg";
+            myImages1[2] = "https://divineforklore.files.wordpress.com/2011/03/tomato-basil-risotto.jpg";
+            myImages1[3] = "http://cdn.eventfinda.co.nz/uploads/events/transformed/367616-188316-14.jpg";
+        //var rnd = Math.floor(Math.random() * myImages1.length);
+          //  if (rnd == 0) {
+            //rnd = 1;
+       // }
+       img.src = myImages1[counter];
+       counter = counter + 1;
+       if (counter == 4){
+           counter = 0;
+       }
+    };
 </script>
 </body> 
 </html> 
