@@ -1,0 +1,54 @@
+<html>
+    <head> 
+        <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+            <style> 
+                .button1 {
+                    margin-top: 60;
+                    margin-right: 450;
+                    margin-left: 450;
+                }
+            </style>
+    </head>
+    <body>
+        <section>
+            <input class="search-bar" type="text"/>
+            <button class="button1" onclick="findSong()">find Song</button>
+        </section>
+        <script>
+            var findSong = function (){
+                var ArtistRequest = new XMLHttpRequest();
+                var searchValue = document.querySelector('.search-bar').value;
+                var method = "GET";
+                var src = "http://developer.echonest.com/api/v4/artist/search?api_key=L1BOKU25ETWB0O3BG&name=" + searchValue;
+                ArtistRequest.open(method, src);
+                ArtistRequest.send();
+                ArtistRequest.onreadystatechange = function(){
+                    if (ArtistRequest.readyState === 4) {
+                        var data = ArtistRequest.response;
+                        var dataParsed = JSON.parse(data);
+                        console.log(dataParsed)
+                        console.log(dataParsed.response)
+                        console.log(dataParsed.response.artists)
+                        console.log(dataParsed.response.artists[0])
+                        var LocationRequest = new XMLHttpRequest();
+                        var ArtistID = dataParsed.response.artists[0].id;
+                        var src = "http://developer.echonest.com/api/v4/artist/profile?api_key=L1BOKU25ETWB0O3BG&id=" + ArtistID + "&format=json&bucket=artist_location";
+                        LocationRequest.open(method, src);
+                        LocationRequest.send();
+                        LocationRequest.onreadystatechange = function(){
+                            if (LocationRequest.readyState === 4) {
+                                var data = LocationRequest.response;
+                                var dataParsed = JSON.parse(data);
+                                console.log(dataParsed);
+                            }
+                        }
+                    } else {
+                        console.log(ArtistRequest.readyState);
+                       
+                    }
+                }
+            }
+            
+</script>
+</body>
+</html>
